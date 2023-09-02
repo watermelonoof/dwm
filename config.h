@@ -69,6 +69,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
+static const char *shutdowncmd[]  = { "sudo", "shutdown", "now", NULL };
+static const char *rebootcmd[]  = { "sudo", "reboot", "now", NULL };
 
 /* custom commands */
 static const char *rofi[] = { "rofi", "-show", "run", "-show-emojis", NULL };
@@ -113,6 +115,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,				XK_s,      spawn,		   {.v = shutdowncmd} },
+	{ MODKEY|ShiftMask,				XK_r,      spawn,		   {.v = rebootcmd} },
 };
 
 /* button definitions */
